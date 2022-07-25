@@ -33,4 +33,12 @@ public class Employee {
     public int hashCode() {
         return Objects.hash(lastName, firstName);
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                '}';
+    }
 }
