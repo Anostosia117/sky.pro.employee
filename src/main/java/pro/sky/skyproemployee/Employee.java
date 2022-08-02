@@ -3,16 +3,22 @@ package pro.sky.skyproemployee;
 import java.util.Objects;
 
 public class Employee {
-    private String lastName;
-    private String firstName;
 
 
-    public Employee(String lastName, String firstName) {
+    private final String lastName;
+    private final String firstName;
+    private final int department;
+    private final float salary;
+
+    public Employee(String lastName,
+                    String firstName,
+                    int department,
+                    float salary) {
         this.lastName = lastName;
         this.firstName = firstName;
-
+        this.department = department;
+        this.salary = salary;
     }
-
     public String getLastName() {
         return this.lastName;
     }
@@ -21,24 +27,34 @@ public class Employee {
         return this.firstName;
     }
 
+    public int getDepartment() {
+        return department;
+    }
+
+    public float getSalary() {
+        return salary;
+    }
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Employee)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Employee)) {
+            return false;
+        }
         Employee employee = (Employee) o;
-        return Objects.equals(lastName, employee.lastName) && Objects.equals(firstName, employee.firstName);
+        return department == employee.department && Float.compare(employee.salary, salary) == 0 && Objects.equals(lastName, employee.lastName) && Objects.equals(firstName, employee.firstName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(lastName, firstName);
+        return Objects.hash(lastName, firstName, department, salary);
     }
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "lastName='" + lastName + '\'' +
-                ", firstName='" + firstName + '\'' +
-                '}';
+        return String.format("Фамилия Имя: %s %s, Отдел: %d, Зарплата: %.2f", lastName, firstName, department, salary);
     }
 }
+
