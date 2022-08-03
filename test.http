@@ -1,0 +1,11 @@
+###
+
+GET http://localhost:8080/employee/add?firstName=Semen&lastName=Petrov&salary=432553&departmentID=3
+
+###
+
+GET http://localhost:8080/employee/add?firstName=Anna&lastName=Petrova&salary=53455&departmentID=3
+
+###
+
+GET http://localhost:8080/departments/all
