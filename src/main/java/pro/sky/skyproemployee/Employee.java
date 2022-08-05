@@ -1,6 +1,11 @@
 package pro.sky.skyproemployee;
 
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.Locale;
 import java.util.Objects;
+
+import static org.apache.commons.lang3.StringUtils.*;
 
 public class Employee {
 
@@ -14,8 +19,8 @@ public class Employee {
                     String firstName,
                     int department,
                     float salary) {
-        this.lastName = lastName;
-        this.firstName = firstName;
+        this.lastName = capitalize(lastName.toLowerCase());
+        this.firstName = capitalize(firstName.toLowerCase());
         this.department = department;
         this.salary = salary;
     }
