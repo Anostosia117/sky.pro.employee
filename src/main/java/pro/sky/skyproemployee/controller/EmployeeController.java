@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pro.sky.skyproemployee.Employee;
-import pro.sky.skyproemployee.EmployeeService;
+import pro.sky.skyproemployee.service.EmployeeService;
 
 import java.util.List;
 
@@ -15,13 +15,16 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
     public EmployeeController(EmployeeService employeeService) {
+
         this.employeeService = employeeService;
     }
 
     @GetMapping("/add")
     public Employee add(@RequestParam("lastName") String lastName,
-                        @RequestParam("firstName") String firstName) {
-        return employeeService.addEmployee(lastName, firstName);
+                        @RequestParam("firstName") String firstName,
+                        @RequestParam("departmentId") int department,
+                        @RequestParam("salary") float salary) {
+        return employeeService.addEmployee(lastName, firstName, department, salary);
     }
 
     @GetMapping("/remove")
@@ -37,6 +40,7 @@ public class EmployeeController {
     }
     @GetMapping("/")
     public List<Employee> getAll() {
+
         return employeeService.getEmployees();
     }
 }
